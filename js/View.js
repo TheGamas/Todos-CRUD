@@ -1,8 +1,13 @@
+import Filters from "./components/Filters.js";
+
 export default class View{
     constructor(model){
         this.table = document.getElementById('table');
         this.model = model;
+        this.filters = new Filters()
         this.loadView();
+
+        this.filters.onClick((filters) => this.filter(filters));
 
     }
 
@@ -18,8 +23,6 @@ export default class View{
             return;
         }
         document.getElementById('alert').style.display = 'none';
-
-        
     }
 
     createTodo(id, title, description, completed){
@@ -119,6 +122,31 @@ export default class View{
     updateRow(id, title, description){
         document.getElementById(`title-${id}`).innerHTML = title;
         document.getElementById(`description-${id}`).innerHTML = description;
+    }
+
+    filter(filters){
+        const {type, words} = filters;
+        let rows = this.table.getElementsByTagName('tr')
+        for (const row of rows){
+            const [title, descripcion, completed] = row.children; 
+            const isCompleted = completed.children[0].checked;
+
+            let showRowName = (title.innerText.includes(words) || descripcion.innerText.includes(words));
+            let shoudBeCompleted = type === 'Completed';
+            let showRowCompleted = type === 'All' || completed.children[0].checked === shoudBeCompleted;
+            
+
+            if (showRowName && showRowCompleted){
+                row.style.display = 'table-row'
+            }
+            else{
+                row.style.display = 'none'
+            }
+            
+
+            
+
+        }
     }
     
 }

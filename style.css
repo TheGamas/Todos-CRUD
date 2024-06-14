@@ -146,6 +146,7 @@ tr{
 td{
     padding: 1vh 5vh 1vh 0vh;
     margin: 0;
+    width: 33vh;
     font-weight: 100;
     text-align: start;
 }
@@ -195,8 +196,7 @@ td button, .form button{
     justify-content: space-between;
     align-items: center;
     height: 35%;
-    width: 30%;
-    
+    width: 30%; 
 }
 
 .update-modal button{

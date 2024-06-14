@@ -27,10 +27,11 @@ document.addEventListener('DOMContentLoaded', function (){
         currentId++;
         localStorage.setItem('currentId', JSON.stringify(currentId));
     })
-
-
+    
     function formsEmpty(){
         return titulo.value === '' || desc.value === '';
     }
 })
+
+
 
