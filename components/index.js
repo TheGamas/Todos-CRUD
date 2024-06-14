@@ -9,15 +9,28 @@ document.addEventListener('DOMContentLoaded', function (){
     let titulo = document.getElementById('title');
     let desc = document.getElementById('description');
     
-    if ( ! currentId){
+    if ( ! currentId || model.isEmpty()){
         currentId = 1;
     }
 
     document.getElementById('add').addEventListener('click', () =>{
-        model.createTodo(currentId, titulo.value, desc.value);
-        view.createTodo(currentId, titulo.value, desc.value);
+        
+        if (formsEmpty()){
+            view.showAlert(true);
+            return;
+        }
+        view.showAlert(false);
+
+        
+        model.createTodo(currentId, titulo.value, desc.value, false);
+        view.createTodo(currentId, titulo.value, desc.value, false);
         currentId++;
         localStorage.setItem('currentId', JSON.stringify(currentId));
     })
+
+
+    function formsEmpty(){
+        return titulo.value === '' || desc.value === '';
+    }
 })
 

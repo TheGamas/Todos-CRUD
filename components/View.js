@@ -8,16 +8,28 @@ export default class View{
 
     loadView(){
         this.model.getTodos().forEach(element => {
-            this.createTodo(element.id, element.title, element.description)
+            this.createTodo(element.id, element.title, element.description, element.completed)
         });
     }
     
-    
+    showAlert(show){
+        if (show){
+            document.getElementById('alert').style.display = 'flex';
+            return;
+        }
+        document.getElementById('alert').style.display = 'none';
 
+        
+    }
 
-    createTodo(id, title, description){
-        this.table.insertAdjacentHTML('beforeend', this.createRow(id, title, description));
+    createTodo(id, title, description, completed){
+        this.table.insertAdjacentHTML('beforeend', this.createRow(id, title, description, completed));
         this.createModal(id);
+        this.asignButtons(id);
+        
+    }
+
+    asignButtons(id){
         document.getElementById(`update1-${id}`).addEventListener('click', () => this.updateTodo(id));
         document.getElementById(`delete-${id}`).addEventListener('click', () => this.removeTodo(id));
         
@@ -29,7 +41,13 @@ export default class View{
             document.getElementById(`modal-${id}`).style.display = 'none';
             this.model.updateTodo(id, title, description)
         })
+
+        document.getElementById(`completed-${id}`).addEventListener('click', () => {
+            this.model.changeCompletedTodo(id)
+        });
+
     }
+
 
     removeTodo(id){
         document.getElementById(`row-${id}`).remove();
@@ -42,18 +60,25 @@ export default class View{
 
 
     
-    createRow(id, title, description){
+    createRow(id, title, description, completed){
         return `<tr id="row-${id}">
                     <td id="title-${id}">${title}</td>
                     <td id="description-${id}">${description}</td>
                     <td>
-                        <input type="checkbox" id="task-uncompleted">
+                        ${this.createCompleted(id, completed)}
                     </td>
                     <td class="td-buttons">
                         <button class="update-button" id="update1-${id}">Update</button>
                         <button class="delete-button" id="delete-${id}">Delete</button>
                     </td>
                 </tr>`
+    }
+
+    createCompleted(id, completed){
+        if (completed){
+            return `<input type="checkbox" id="completed-${id}" checked></input>`;
+        }
+        return `<input type="checkbox" id="completed-${id}"></input>`;   
     }
 
 
@@ -82,6 +107,5 @@ export default class View{
         document.getElementById(`title-${id}`).innerHTML = title;
         document.getElementById(`description-${id}`).innerHTML = description;
     }
-
     
 }

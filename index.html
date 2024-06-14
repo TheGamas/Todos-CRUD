@@ -13,20 +13,21 @@
             <h1>JS Todo List</h1>
             <h2>Home</h2>
         </section>
+        
 
         <section class="filters">
             <h2>Filters</h2>
             <div class="task">
-                <input type="checkbox" id="task-all" checked>
-                <label for="task1">All</label>
+                <input type="radio" id="task-all" name="options" value="All" checked>
+                <label for="task-all">All</label>
             </div>
             <div class="task">
-                <input type="checkbox" id="task-completed">
-                <label for="task1">Completed</label>
+                <input type="radio" id="task-completed" name="options" value="Completed">
+                <label for="task-completed">Completed</label>
             </div>
             <div class="task">
-                <input type="checkbox" id="task-uncompleted">
-                <label for="task1">Uncompleted</label>
+                <input type="radio" id="task-uncompleted" name="options" value="Uncompleted">
+                <label for="task-uncompleted">Uncompleted</label>
             </div>
             <input type="text" placeholder="Words" class="input-text">
             <button>Search</button>
@@ -34,7 +35,10 @@
     </header>
 
     <main>
-        
+        <article class="alert" id="alert">
+            <h2>Title and description are required</h2>
+        </article>
+
         <div class="form">
             <div>
                 <label>Title</label>
@@ -57,17 +61,7 @@
                 </tr>
             </thead>
             <tbody id="table">
-                <tr id="row-0">
-                    <td>Learn HTML</td>
-                    <td>Watch HTML Tutorials</td>
-                    <td>
-                        <input type="checkbox" id="task-uncompleted">
-                    </td>
-                    <td class="td-buttons">
-                        <button class="update-button" id="update1-0">Update</button>
-                        <button class="delete-button" id="delete-0">Delete</button>
-                    </td>
-                </tr>              
+                              
             </tbody>
         </table>
         

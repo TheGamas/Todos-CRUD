@@ -67,6 +67,22 @@ header section{
 }
 /*********FORM STYLES**********/
 
+.alert{
+    display: flex;
+    background-color: #e84c3c;
+    color: #F9FBFF;
+    font-size: 15px;
+    width: 80%;
+    margin-top: 3vh;
+    padding: 0.3vh;
+    border-radius: 5px;
+    display: none;
+}
+
+.alert h2{
+    margin-left: 3vh;
+}
+
 .form{
     display: flex;
     flex-direction: row;
@@ -146,7 +162,7 @@ td button, .form button{
 }
 
 .delete-button{
-    background-color: #f55;
+    background-color: #e84c3c;
 
 }
 
@@ -214,4 +230,9 @@ button:active{
 
 button{
     transition: 0.5s;
+}
+
+.filters button:hover{
+    background-color: rgb(54, 131, 177);
+    color: #F9FBFF;
 }

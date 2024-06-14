@@ -2,15 +2,20 @@ export default class Model{
 
     constructor(){
         this.todos = JSON.parse(localStorage.getItem('todos'));
-        if (!this.todos){
+        if (!this.todos || this.todos.length === 0){
             this.todos = []
+            this.createTodo(0, "Learn HTML", "Watch HTML Tutorials", false)
         }
     }
 
 
-    createTodo(id, title, description){
-        this.todos.push({id, title, description})
+    createTodo(id, title, description, completed){
+        this.todos.push({id, title, description, completed})
         this.save();
+    }
+
+    isEmpty(){
+        return this.todos.length === 1;
     }
 
     getTodos(){
@@ -33,6 +38,15 @@ export default class Model{
             this.todos[index].description = description;
             this.save();
         }
+    }
+
+    changeCompletedTodo(id){
+        this.todos.map((todo) => {
+            if(todo.id === id){
+                todo.completed = ! todo.completed;
+            }
+        })
+        this.save()
     }
 
 }
