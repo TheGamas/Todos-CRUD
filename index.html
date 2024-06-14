@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <header>
+        <section class="titles">
+            <h1>JS Todo List</h1>
+            <h2>Home</h2>
+        </section>
+
+        <section class="filters">
+            <h2>Filters</h2>
+            <div class="task">
+                <input type="checkbox" id="task-all" checked>
+                <label for="task1">All</label>
+            </div>
+            <div class="task">
+                <input type="checkbox" id="task-completed">
+                <label for="task1">Completed</label>
+            </div>
+            <div class="task">
+                <input type="checkbox" id="task-uncompleted">
+                <label for="task1">Uncompleted</label>
+            </div>
+            <input type="text" placeholder="Words" class="input-text">
+            <button>Search</button>
+        </section>
+    </header>
+
+    <main>
+        
+        <div class="form">
+            <div>
+                <label>Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div>
+                <label>Description</label>
+                <input type="text" name="description" id="description">
+            </div>
+            <button id="add">Add</button>
+        </div>
+        
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Todo</th>
+                    <th>Description</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+                <tr id="row-0">
+                    <td>Learn HTML</td>
+                    <td>Watch HTML Tutorials</td>
+                    <td>
+                        <input type="checkbox" id="task-uncompleted">
+                    </td>
+                    <td class="td-buttons">
+                        <button class="update-button" id="update1-0">Update</button>
+                        <button class="delete-button" id="delete-0">Delete</button>
+                    </td>
+                </tr>              
+            </tbody>
+        </table>
+        
+    </main>
+    
+    
+
+    
+
+    <script type="module" src="components/index.js"></script>
+    
+</body>
+
+</html>
