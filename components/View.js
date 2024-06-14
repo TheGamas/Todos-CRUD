@@ -35,8 +35,15 @@ export default class View{
         
         document.getElementById(`button-modal-${id}`).addEventListener('click', () => {
             
-            let title = document.getElementById('modal-title').value;
-            let description = document.getElementById('modal-description').value;
+            if (this.formsUpdateEmpty(id)){
+                document.getElementById(`modal-${id}`).style.display = 'none';
+                this.showAlert(true);
+                return;
+            }
+            this.showAlert(false);
+
+            let title = document.getElementById(`modal-title-${id}`).value;
+            let description = document.getElementById(`modal-description-${id}`).value;
             this.updateRow(id, title, description);
             document.getElementById(`modal-${id}`).style.display = 'none';
             this.model.updateTodo(id, title, description)
@@ -46,6 +53,12 @@ export default class View{
             this.model.changeCompletedTodo(id)
         });
 
+    }
+
+    formsUpdateEmpty(id){
+        let titulo = document.getElementById(`modal-title-${id}`);
+        let desc = document.getElementById(`modal-description-${id}`);
+        return titulo.value === '' || desc.value === '';
     }
 
 
@@ -88,11 +101,11 @@ export default class View{
                 <div class="form">
                     <div>
                         <label>Title</label>
-                        <input type="text" name="title" id="modal-title">
+                        <input type="text" name="title" id="modal-title-${id}">
                     </div>
                     <div>
                         <label>Description</label>
-                        <input type="text" name="description"id="modal-description">
+                        <input type="text" name="description"id="modal-description-${id}">
                     </div>
                     <button id="button-modal-${id}">Update</button>
                 </div>
