@@ -54,6 +54,12 @@ header section{
 .input-text{
     padding: 10px;
     border-radius: 5px;
+    border: none;
+}
+
+.tasks{
+    display: flex;
+    flex-direction: row;
 }
 
 .filters button{
@@ -87,7 +93,8 @@ header section{
     display: flex;
     flex-direction: row;
     width: 80%;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     color: white;
     padding: 3vh;
     height: 3vh;
@@ -95,29 +102,34 @@ header section{
 }
 
 .form div{
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    width: 100%;
+
 }
 
 .form input{
     width: 100%;
-    height: 100%;
+    height: 3vh;
     border-radius: 5px;
     border: none;
 }
 
 .form button{
     width: 30vh;
-    background-color: #4cf;
+    background-color: rgb(54, 131, 177);
     height: 100%;
     margin: 0;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form label{
+    width: 10vh;
 }
 
 
@@ -144,9 +156,8 @@ tr{
     padding: 0;
 }
 td{
-    padding: 1vh 5vh 1vh 0vh;
+    padding: 1vh 1vh 1vh 0vh;
     margin: 0;
-    width: 33vh;
     font-weight: 100;
     text-align: start;
 }
@@ -158,13 +169,17 @@ td button, .form button{
     color: #F9FBFF;
 }
 
+td button {
+    padding: 2vh;
+    border: none;
+}
+
 .update-button{
     background-color: #09f;
 }
 
 .delete-button{
     background-color: #e84c3c;
-
 }
 
 .td-buttons{
@@ -235,4 +250,25 @@ button{
 .filters button:hover{
     background-color: rgb(54, 131, 177);
     color: #F9FBFF;
+}
+
+
+/*MEDIA QUERYS*/
+@media (max-width: 850px) {
+    header {
+        flex-direction: column;
+    }
+
+    .form{
+        flex-direction: column;
+        height: 15vh;
+    }
+
+    
+}
+
+@media (max-width:700px) {
+    .tasks {
+        flex-direction: column;
+    }
 }

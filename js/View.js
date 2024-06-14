@@ -84,8 +84,12 @@ export default class View{
                         ${this.createCompleted(id, completed)}
                     </td>
                     <td class="td-buttons">
-                        <button class="update-button" id="update1-${id}">Update</button>
-                        <button class="delete-button" id="delete-${id}">Delete</button>
+                        <button class="update-button" id="update1-${id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="delete-button" id="delete-${id}">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
                     </td>
                 </tr>`
     }
@@ -131,22 +135,17 @@ export default class View{
             const [title, descripcion, completed] = row.children; 
             const isCompleted = completed.children[0].checked;
 
-            let showRowName = (title.innerText.includes(words) || descripcion.innerText.includes(words));
+            let showDueToName = (title.innerText.includes(words) || descripcion.innerText.includes(words));
             let shoudBeCompleted = type === 'Completed';
-            let showRowCompleted = type === 'All' || completed.children[0].checked === shoudBeCompleted;
+            let showDueToCompleted = type === 'All' || completed.children[0].checked === shoudBeCompleted;
             
 
-            if (showRowName && showRowCompleted){
+            if (showDueToName && showDueToCompleted){
                 row.style.display = 'table-row'
             }
             else{
                 row.style.display = 'none'
             }
-            
-
-            
-
         }
-    }
-    
+    } 
 }
